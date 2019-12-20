@@ -1,7 +1,4 @@
-﻿@{
-
-}
-
+﻿
 <h1>My Cheeses</h1>
 
 <p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
@@ -12,14 +9,20 @@
 }
 
 <form method="post">
-    <ul>
+    <table class="table">
+        <tr>
+            <th>Remove</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
     @foreach(Cheese cheese in ViewBag.cheeses)
     {
-        <li>
-            @cheese.Name : @cheese.Description
-            <input type="checkbox" name="cheese_remove" value="@cheese.Name" />
-        </li>
+        <tr>
+            <td><input type="checkbox" name="cheese_remove" value="@cheese.Name" /></td>
+            <td>@cheese.Name</td>
+            <td>@cheese.Description</td>
+        </tr>
     }
-    </ul>
+    </table>
     <input type="submit" value="Remove Selected" />
 </form>

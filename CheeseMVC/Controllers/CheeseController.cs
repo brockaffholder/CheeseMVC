@@ -17,6 +17,7 @@ namespace CheeseMVC.Controllers
             ViewBag.cheeses = Cheeses;
 
             return View();
+            //return Content("Ben");
         }
 
         [Route("/Cheese")]
