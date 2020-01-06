@@ -1,25 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 namespace CheeseMVC.Models
 {
     public class Cheese
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<string> Wines { get; set; }
+        public int CheeseId { get; set; }
+        public CheeseType Type { get; set; }
+        public int Rating { get; set; }
+        private static int nextId = 1;
 
-        public Cheese(string name, string description, List<string> wines)
+        public Cheese()
         {
-            Name = name;
-            Description = description;
-            Wines = wines;
-        }
-
-        public Cheese(string name, string description) : this(name, description, null) { }
-
-        public void AddToWinelist(string wine)
-        {
-            Wines.Add(wine);
+            CheeseId = nextId++;
         }
     }
+
 }

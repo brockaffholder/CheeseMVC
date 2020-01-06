@@ -1,9 +1,10 @@
-﻿
+﻿@model List<CheeseMVC.Models.Cheese>
+
 <h1>My Cheeses</h1>
 
 <p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
 
-@if (ViewBag.cheeses.Count == 0)
+@if (Model.Count == 0)
 {
     <p>No cheeses yet</p>
 }
@@ -14,13 +15,19 @@
             <th>Remove</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Type</th>
+            <th>Rating</th>
+            <th>Edit</th>
         </tr>
-    @foreach(Cheese cheese in ViewBag.cheeses)
+    @foreach(var cheese in Model)
     {
         <tr>
-            <td><input type="checkbox" name="cheese_remove" value="@cheese.Name" /></td>
+            <td><input type="checkbox" name="cheeseIds" value="@cheese.CheeseId" /></td>
             <td>@cheese.Name</td>
             <td>@cheese.Description</td>
+            <td>@cheese.Type</td>
+            <td>@cheese.Rating</td>
+            <td><a asp-controller="Cheese" asp-action="Edit" asp-route-cheeseId="@cheese.CheeseId">edit</a></td>
         </tr>
     }
     </table>
