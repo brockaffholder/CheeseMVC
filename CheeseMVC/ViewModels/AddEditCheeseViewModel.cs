@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CheeseMVC.Models;
 
 namespace CheeseMVC.ViewModels
@@ -11,14 +12,15 @@ namespace CheeseMVC.ViewModels
         {
         }
 
-        public AddEditCheeseViewModel(Cheese ch)
+        public AddEditCheeseViewModel(Cheese ch, IEnumerable<CheeseCategory> categories) : base(categories)
         {
+            //IEnumerable<CheeseCategory> categories):base(categories) - use above for final edit update
             // Use Cheese object to initialize the ViewModel properties
-            CheeseId = ch.CheeseId;
+            CheeseId = ch.ID;
             Name = ch.Name;
             Description = ch.Description;
-            Type = ch.Type;
             Rating = ch.Rating;
+            CategoryID = ch.CategoryID;
         }
     }
 }
